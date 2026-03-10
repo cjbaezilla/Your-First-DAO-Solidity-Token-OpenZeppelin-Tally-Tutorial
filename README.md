@@ -1,4 +1,4 @@
-# DAO Governance System
+# DAO Governance System Tutorial
 
 Welcome! I'm excited to walk you through our DAO (Decentralized Autonomous Organization) governance system. This document explains how everything works in plain language, so don't worry if you're new to blockchain technology—I'll break it all down step by step.
 
@@ -194,6 +194,58 @@ To run these tests locally, you can use the following command:
 ```bash
 npx hardhat test
 ```
+## Sepolia Deployment & Verification
+
+I have successfully deployed and verified the DAO governance system on the **Sepolia Testnet**. This deployment follows the architectural patterns described above, ensuring a secure and decentralized governance flow.
+
+### 📍 Deployment Addresses
+
+| Contract | Address | Explorer Link | Creation Transaction |
+| :--- | :--- | :--- | :--- |
+| **DAOToken** | `0x66CdB0c60E5b40290cD16a00916Be34453939a48` | [Etherscan](https://sepolia.etherscan.io/address/0x66CdB0c60E5b40290cD16a00916Be34453939a48#code) | [0xe24b...1405](https://sepolia.etherscan.io/tx/0xe24b012e00cd82ea05c3dae0628c89caab7e0767ec77081ea8c9ecb2d6f31405) |
+| **TimelockController** | `0x3Df2d32fe95EB42daEb4Dc81c1981C52b5aF25D2` | [Etherscan](https://sepolia.etherscan.io/address/0x3Df2d32fe95EB42daEb4Dc81c1981C52b5aF25D2#code) | [0x04c2...5e8b](https://sepolia.etherscan.io/tx/0x04c222cf8ed585cd346008eb9d36f4918eca985737e63555bb0ef1daae955e8b) |
+| **DAOGovernor** | `0xF34Bf4a2e4cc6819d025410625775e16ba4728a0` | [Etherscan](https://sepolia.etherscan.io/address/0xF34Bf4a2e4cc6819d025410625775e16ba4728a0#code) | [0x8cd2...4cfa](https://sepolia.etherscan.io/tx/0x8cd2f0d22ba59c5e41ad53cf5b463f71a1736bdb533470a83749f20907a2c4fa) |
+
+---
+
+### ⚙️ Constructor Configuration Parameters
+
+The following parameters were used during the deployment to ensure the governance rules are enforced as intended:
+
+| Contract | Parameter | Value | Purpose |
+| :--- | :--- | :--- | :--- |
+| **DAOToken** | `initialOwner` | `Deployer` | Initial administrative rights (transferred to Timelock after deployment). |
+| **TimelockController** | `minDelay` | `172800` (2 days) | Minimum "cool-off" period before a passed proposal can be executed. |
+| **TimelockController** | `proposers` | `[]` | No initial proposers (added via `grantRole` after deployment). |
+| **TimelockController** | `executors` | `["0x0...0"]` | Open execution: anyone can trigger a proposal after the timelock. |
+| **TimelockController** | `admin` | `Deployer` | Initial role admin (renounced/managed by Timelock eventually). |
+| **DAOGovernor** | `_token` | `0x66Cd...9a48` | Connects the Governor to our voting token. |
+| **DAOGovernor** | `_timelock` | `0x3Df2...25D2` | Connects the Governor to the execution time-lock. |
+
+---
+
+### 🔐 Roles & Permission Handover
+
+To achieve a truly decentralized state, I performed the following automated setup steps immediately after deployment:
+
+1.  **Governor as Proposer**: The `DAOGovernor` contract was granted the `PROPOSER_ROLE` on the `TimelockController`. This ensures only passed governance proposals can enter the queue.
+2.  **Public Execution**: The Zero Address (`0x0...0`) was granted the `EXECUTOR_ROLE`, allowing any community member to execute a proposal once its timelock expires.
+3.  **Governance Ownership**: Ownership of the `DAOToken` was transferred to the `TimelockController`. This means that administrative functions like `mint`, `pause`, and `unpause` can **only** be triggered by an official governance vote.
+
+---
+
+### 🚀 How to Verify the Verification
+
+All contracts are fully verified on Etherscan. This means you can:
+- Read the **Source Code** directly on the blockchain.
+- Review the **ABI** for integration.
+- Interact with the contracts using the **"Write Contract"** feature on Etherscan (e.g., to delegate or vote).
+
+To run a deployment yourself, you can use the Hardhat Ignition module I developed:
+```bash
+npx hardhat ignition deploy ./ignition/modules/DAOModule.js --network sepolia --verify
+```
+
 ---
 
 ## Disclaimer
