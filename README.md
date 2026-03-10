@@ -205,5 +205,6 @@ If you're considering deploying a governance system for actual use, please:
 - Use well-audited, battle-tested contracts from reputable sources
 - Start with small amounts and thoroughly test everything
 - Consider your specific requirements carefully
+- **Never use .env files in production environments** - use proper secret management solutions like HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or dedicated hardware security modules (HSMs)
 
 Learning is the first step, but production deployment requires much more rigorous engineering and security practices than what we can demonstrate in a tutorial setting.
