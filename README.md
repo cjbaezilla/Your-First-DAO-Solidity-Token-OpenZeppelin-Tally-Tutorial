@@ -2,7 +2,9 @@
 
 Welcome! I'm excited to walk you through our DAO (Decentralized Autonomous Organization) governance system. This document explains how everything works in plain language, so don't worry if you're new to blockchain technology—I'll break it all down step by step.
 
-!["Tally Home](./images/screenshot_tally2.png)
+![Cover](./images/1.jpg)
+
+![Tally Home](./images/screenshot_tally2.png)
 
 ## Our Token: DAOToken
 
