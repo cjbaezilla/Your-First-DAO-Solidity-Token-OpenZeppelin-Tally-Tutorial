@@ -2,6 +2,8 @@
 
 Welcome! I'm excited to walk you through our DAO (Decentralized Autonomous Organization) governance system. This document explains how everything works in plain language, so don't worry if you're new to blockchain technology—I'll break it all down step by step.
 
+!["Tally Home](./images/screenshot_tally2.png)
+
 ## Our Token: DAOToken
 
 Let me start by introducing our governance token, which is called DAOToken with the symbol DAOT. This isn't just any token; it's designed specifically to let our community make decisions together. I've built it with several important features that I'll explain.
@@ -133,7 +135,14 @@ If we ever want to switch to timestamp mode, we would need to update both the to
 
 ### Interaction with Tally and Other UIs
 
+![DAO Creation Tally](./images/screenshot_tally1.png)
+
 Our Governor is fully compatible with Tally, which is a popular governance interface. Token holders can use Tally's website to view proposals, delegate their voting power to others, cast votes, and execute passed proposals without needing to interact directly with the contracts. Tally automatically detects our Governor's parameters and displays voting periods, quorum requirements, and other information correctly.
+
+You can interact with our DAO governance system using Tally:
+- [DAO Home Page](https://www.tally.xyz/gov/dao-tutorial)
+- [Proposals Page](https://www.tally.xyz/gov/dao-tutorial/proposals)
+- [Example Test Proposal](https://www.tally.xyz/gov/dao-tutorial/proposal/55668039265640376542534466764247011469981353354712600333202966157762151218731)
 
 When using Tally or similar interfaces, you typically connect your wallet, see the current active proposals, and either vote directly or delegate to someone else whose judgment you trust. Delegation is important because not everyone has time to vote on every proposal; through delegation, you can assign your voting power to representatives who will vote on your behalf according to their own analysis.
 
@@ -143,11 +152,17 @@ I've designed the system with clear separation of responsibilities:
 
 The DAOToken's owner can mint new tokens and pause transfers. This gives flexibility for supply adjustments and emergency response, but it's centralized power. In a fully decentralized system, these powers might be transferred to the Timelock or to governance itself. For now, I retain ownership for bootstrapping and safety.
 
+![DAO Creation Proposal Tally](./images/screenshot_tally4.png)
+
 The Timelock holds all contract permissions—it should be the keeper of treasury funds, ownership roles, and any other sensitive permissions. This ensures that no single entity can unilaterally move funds or change the system; all changes must flow through the governance proposal process and then wait out the timelock.
 
 The Governor itself has no special permissions—it merely proposes and executes, but only through the Timelock. The Governor can only call functions that it has been explicitly granted permission to call on the Timelock.
 
+![DAO Creation Proposal Finish Tally](./images/screenshot_tally5.png)
+
 There's also a potential for delegation of governance power. Token holders can delegate their voting power to others using the `delegate` function on the token. The delegate doesn't gain any access to the tokens themselves—they can't transfer or spend them—they only gain the ability to cast votes with that power in governance proposals. This is a read-only representation of voting weight.
+
+![DAO Creation Addresses Tally](./images/screenshot_tally3.png)
 
 ## Future Considerations
 
