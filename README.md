@@ -228,9 +228,9 @@ The following parameters were used during the deployment to ensure the governanc
 
 To achieve a truly decentralized state, I performed the following automated setup steps immediately after deployment:
 
-1.  **Governor as Proposer**: The `DAOGovernor` contract was granted the `PROPOSER_ROLE` on the `TimelockController`. This ensures only passed governance proposals can enter the queue.
-2.  **Public Execution**: The Zero Address (`0x0...0`) was granted the `EXECUTOR_ROLE`, allowing any community member to execute a proposal once its timelock expires.
-3.  **Governance Ownership**: Ownership of the `DAOToken` was transferred to the `TimelockController`. This means that administrative functions like `mint`, `pause`, and `unpause` can **only** be triggered by an official governance vote.
+1.  **Governor as Proposer**: The `DAOGovernor` contract was granted the `PROPOSER_ROLE` on the `TimelockController`. This ensures only passed governance proposals can enter the queue. ([Transaction](https://sepolia.etherscan.io/tx/0xea56688b4a2acac4d5a2b847d4c46750d7187d91332ee3a78027827b75dbbcc1))
+2.  **Public Execution**: The Zero Address (`0x0...0`) was granted the `EXECUTOR_ROLE`, allowing any community member to execute a proposal once its timelock expires. ([Transaction](https://sepolia.etherscan.io/tx/0xabd279f2cabad804d51c7be6d05f7bcf7aaf75b08e607a168c2b4d449970b799))
+3.  **Governance Ownership**: Ownership of the `DAOToken` was transferred to the `TimelockController`. This means that administrative functions like `mint`, `pause`, and `unpause` can **only** be triggered by an official governance vote. ([Transaction](https://sepolia.etherscan.io/tx/0x27a579830d0f456f2a209552b78436f1841d813b1654d9b245227b6823bacc00))
 
 ---
 
