@@ -6,6 +6,14 @@ Welcome! I'm excited to walk you through our DAO (Decentralized Autonomous Organ
 
 ![Tally Home](./images/screenshot_tally2.png)
 
+## Read More
+
+1. 📢 **LinkedIn announcement**: https://www.linkedin.com/posts/carlos-baeza-negroni_dao-web3-ethereum-activity-7437461284335509504-b4AJ
+2. 📖 **Read the article directly on LinkedIn**: https://www.linkedin.com/pulse/building-decentralized-autonomous-organization-guide-baeza-negroni-nb6ve
+3. 🐦 **X/Twitter Announcement**: https://x.com/cjbaezilla/status/2031698466359939418
+4. 🔍 **Browse the source**:
+   [article.md](./article.md)
+
 ## Our Token: DAOToken
 
 Let me start by introducing our governance token, which is called DAOToken with the symbol DAOT. This isn't just any token; it's designed specifically to let our community make decisions together. I've built it with several important features that I'll explain.
